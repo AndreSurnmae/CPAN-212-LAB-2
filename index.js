@@ -6,6 +6,7 @@ const name = [
     {id: 1, name: "Andre Tolentino"}
 ];
 
+// Callback
 setTimeout(() => {
     app.route("/callback")
         .get((rq, rs) => {
@@ -14,6 +15,7 @@ setTimeout(() => {
         }); 
 }, 1000);
 
+// Promise
 const promise = new Promise((res, rej) => {
     try {
         setTimeout(() => {
@@ -34,6 +36,7 @@ promise
     .then(s => {console.log(s)})
     .catch(e => {console.log(e)}) 
 
+// Async/await
 async function myFirstAsync() {
     try {
         const async_await = await app.route("/async").get((rq, rs) => {
@@ -49,6 +52,7 @@ async function myFirstAsync() {
 
 myFirstAsync();
 
+// Async/await | fs.promises
 async function myNameFile() {
     try {
         const data = await fs.readFile("name.txt", "utf8");
@@ -64,6 +68,7 @@ async function myNameFile() {
 
 myNameFile();
 
+// Helper function | I dont know how to replicate the sample image, so I resulted to this
 function simulateDelay(ms) {
     const promise = new Promise((res, rej) => {
         try {
@@ -82,6 +87,7 @@ function simulateDelay(ms) {
         }
     });
 
+    // chain 
     setTimeout(() => {
         promise
         .then(v => {return "Login complete"})
